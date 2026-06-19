@@ -149,154 +149,6 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-/**
- * Item in *Layout → Links*
- */
-export interface LayoutDocumentDataLinksItem {
-  /**
-   * Link field in *Layout → Links*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: Add a single link or a list of links (for dropdown menu)
-   * - **API ID Path**: layout.links[].link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  link: prismic.Repeatable<
-    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
-  >;
-}
-
-/**
- * Item in *Layout → Links 1*
- */
-export interface LayoutDocumentDataLinks1Item {
-  /**
-   * Link field in *Layout → Links 1*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: layout.links_1[].link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-}
-
-/**
- * Item in *Layout → Social Links*
- */
-export interface LayoutDocumentDataSocialLinksItem {
-  /**
-   * Link field in *Layout → Social Links*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: layout.social_links[].link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-  /**
-   * Icon field in *Layout → Social Links*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: layout.social_links[].icon
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  icon: prismic.ImageField<never>;
-}
-
-/**
- * Content for Layout documents
- */
-interface LayoutDocumentData {
-  /**
-   * Links field in *Layout*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: layout.links[]
-   * - **Tab**: Header
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  links: prismic.GroupField<Simplify<LayoutDocumentDataLinksItem>>;
-
-  /**
-   * CTA field in *Layout*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: layout.cta
-   * - **Tab**: Header
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  cta: prismic.LinkField<
-    string,
-    string,
-    unknown,
-    prismic.FieldState,
-    never
-  >; /**
-   * Text field in *Layout*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Descriptive text to accompany logo
-   * - **API ID Path**: layout.text
-   * - **Tab**: Footer
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  text: prismic.RichTextField;
-
-  /**
-   * Links Title 1 field in *Layout*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: layout.links_title_1
-   * - **Tab**: Footer
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  links_title_1: prismic.KeyTextField;
-
-  /**
-   * Links 1 field in *Layout*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: layout.links_1[]
-   * - **Tab**: Footer
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  links_1: prismic.GroupField<Simplify<LayoutDocumentDataLinks1Item>>;
-
-  /**
-   * Social Links field in *Layout*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: layout.social_links[]
-   * - **Tab**: Footer
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  social_links: prismic.GroupField<Simplify<LayoutDocumentDataSocialLinksItem>>;
-}
-
-/**
- * Layout document from Prismic
- *
- * - **API ID**: `layout`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/content-modeling
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type LayoutDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<LayoutDocumentData>,
-    "layout",
-    Lang
-  >;
-
 type PageDocumentDataSlicesSlice =
   | FormSlice
   | CardsSlice
@@ -431,7 +283,25 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-export type AllDocumentTypes = HomeDocument | LayoutDocument | PageDocument;
+interface SiteLayoutDocumentData {}
+
+/**
+ * Site Layout document from Prismic
+ *
+ * - **API ID**: `site_layout`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SiteLayoutDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SiteLayoutDocumentData>,
+    "site_layout",
+    Lang
+  >;
+
+export type AllDocumentTypes = HomeDocument | PageDocument | SiteLayoutDocument;
 
 /**
  * Item in *AccordionSection → Default → Primary → Items*
@@ -1942,14 +1812,11 @@ declare module "@prismicio/client" {
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
-      LayoutDocument,
-      LayoutDocumentData,
-      LayoutDocumentDataLinksItem,
-      LayoutDocumentDataLinks1Item,
-      LayoutDocumentDataSocialLinksItem,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      SiteLayoutDocument,
+      SiteLayoutDocumentData,
       AllDocumentTypes,
       AccordionSectionSlice,
       AccordionSectionSliceDefaultPrimaryItemsItem,

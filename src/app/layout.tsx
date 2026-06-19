@@ -52,7 +52,7 @@ export default function RootLayout({
 
 async function InnerLayout({ children }: { children: React.ReactNode }) {
   const client = createClient();
-  const layoutData = await client.getSingle("layout").catch((error) => {
+  const layoutData = await client.getSingle("site_layout").catch((error) => {
     notFound();
   });
 
