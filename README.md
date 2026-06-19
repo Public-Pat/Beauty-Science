@@ -53,7 +53,7 @@ slice machine (see details below):
    will need to update styling in the header and footer.
 7. Update the favicon at `src/app/favicon.ico` (use a favicon generator site to turn a png to ico)
 8. Update the sharing image in `public/sharing-image.png`. Make it 1200x640.
-9. Update all the fallback urls in metadata and robots.txt by searching the site for "https://gilmour-space.netlify.app" and replacing
+9. Update all the fallback urls in metadata and robots.txt by searching the site for "https://beauty-science-richmond.netlify.app" and replacing
    with your proposed site url.
 
 ### Populating the homepage

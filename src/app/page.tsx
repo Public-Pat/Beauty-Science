@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       ],
     },
-    metadataBase: new URL(process.env.URL ?? "https://https://gilmour-space.netlify.app"),
+    metadataBase: new URL(process.env.URL ?? "https://https://beauty-science-richmond.netlify.app"),
     alternates: {
       canonical: page?.url ?? null,
     }
