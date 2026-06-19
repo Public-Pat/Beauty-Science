@@ -1,0 +1,80 @@
+.Header {
+  // --------------------------- RULES ---------------------------
+
+  // ANYONE can edit the VALUES of style declarations for colors, type sizes, margins, paddings, gaps, alignment or justification
+  // SENIORS ONLY can add or remove declarations and edit layout values like display or position.
+
+  // -------------------------------------------------------------
+
+  --my-margin: 2rem; // 0px for full width
+  margin: var(--my-margin) 0;
+  padding: 0 var(--my-margin);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent; // var(--header-bg-color) for full width menu
+
+  z-index: 100;
+  display: none;
+  mix-blend-mode: normal; // difference is good if you want to remove the BG colour but still show text over various colors
+  @include media(lg) {
+    display: block;
+  }
+}
+
+.Inner {
+  --my-padding: 2rem;
+  width: 100%;
+  margin: 0 auto;
+  max-width: calc(var(--site-max-width) + 2 * var(--my-padding)); // 0px for full width
+  padding: var(--my-padding);
+
+  color: var(--header-text-color);
+  background-color: var(--header-bg-color);
+  backdrop-filter: blur(10px);
+
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.Logo {
+  svg {
+    height: 2rem;
+    width: auto;
+    display: block;
+    path {
+      fill: currentColor;
+    }
+  }
+}
+
+.Nav {
+  ul {
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    li {
+      list-style: none;
+      padding: 0;
+      @include type-sm;
+      @include font-heading;
+      font-weight: normal;
+      a {
+        text-decoration: none;
+        text-transform: uppercase;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
