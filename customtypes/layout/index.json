@@ -5,11 +5,11 @@
   "repeatable": false,
   "status": true,
   "json": {
-    "Main": {
-      "header": {
+    "Header": {
+      "links": {
         "type": "Group",
         "config": {
-          "label": "header",
+          "label": "Header Links",
           "repeat": true,
           "fields": {
             "link": {
@@ -20,16 +20,18 @@
                 "select": null,
                 "allowTargetBlank": true,
                 "allowText": true,
-                "repeat": false
+                "repeat": true
               }
             }
           }
         }
-      },
-      "footer": {
+      }
+    },
+    "Footer": {
+      "links_1": {
         "type": "Group",
         "config": {
-          "label": "footer",
+          "label": "Footer Links",
           "repeat": true,
           "fields": {
             "link": {
@@ -40,7 +42,7 @@
                 "select": null,
                 "allowTargetBlank": true,
                 "allowText": true,
-                "repeat": false
+                "repeat": true
               }
             }
           }

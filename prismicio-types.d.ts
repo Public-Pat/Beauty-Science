@@ -150,33 +150,37 @@ export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
 /**
- * Item in *layout → header*
+ * Item in *layout → Header Links*
  */
-export interface LayoutDocumentDataHeaderItem {
+export interface LayoutDocumentDataLinksItem {
   /**
-   * link field in *layout → header*
+   * link field in *layout → Header Links*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: layout.header[].link
+   * - **API ID Path**: layout.links[].link
    * - **Documentation**: https://prismic.io/docs/fields/link
    */
-  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+  link: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
 }
 
 /**
- * Item in *layout → footer*
+ * Item in *layout → Footer Links*
  */
-export interface LayoutDocumentDataFooterItem {
+export interface LayoutDocumentDataLinks1Item {
   /**
-   * link field in *layout → footer*
+   * link field in *layout → Footer Links*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: layout.footer[].link
+   * - **API ID Path**: layout.links_1[].link
    * - **Documentation**: https://prismic.io/docs/fields/link
    */
-  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+  link: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
 }
 
 /**
@@ -184,26 +188,24 @@ export interface LayoutDocumentDataFooterItem {
  */
 interface LayoutDocumentData {
   /**
-   * header field in *layout*
+   * Header Links field in *layout*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: layout.header[]
-   * - **Tab**: Main
+   * - **API ID Path**: layout.links[]
+   * - **Tab**: Header
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
-  header: prismic.GroupField<Simplify<LayoutDocumentDataHeaderItem>>;
-
-  /**
-   * footer field in *layout*
+  links: prismic.GroupField<Simplify<LayoutDocumentDataLinksItem>>; /**
+   * Footer Links field in *layout*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: layout.footer[]
-   * - **Tab**: Main
+   * - **API ID Path**: layout.links_1[]
+   * - **Tab**: Footer
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
-  footer: prismic.GroupField<Simplify<LayoutDocumentDataFooterItem>>;
+  links_1: prismic.GroupField<Simplify<LayoutDocumentDataLinks1Item>>;
 }
 
 /**
@@ -1869,8 +1871,8 @@ declare module "@prismicio/client" {
       HomeDocumentDataSlicesSlice,
       LayoutDocument,
       LayoutDocumentData,
-      LayoutDocumentDataHeaderItem,
-      LayoutDocumentDataFooterItem,
+      LayoutDocumentDataLinksItem,
+      LayoutDocumentDataLinks1Item,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,

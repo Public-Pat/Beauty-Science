@@ -26,8 +26,8 @@ const bodyFont = Geist({
 // MAKE SURE YOUR PRIMARY FONT IS THE LAST IN THE LIST
 
 export const metadata: Metadata = {
-  title: "Gilmour Space | Launching Next-Generation Rockets",
-  description: "Australia's leading space company, developing and launching sovereign space capabilities with next-generation hybrid rockets.",
+  title: "Beauty Science | Skin, Cosmetic and Wellness",
+  description: "Discover the fusion of skin, cosmetic and wellness.,
 };
 
 export default function RootLayout({
