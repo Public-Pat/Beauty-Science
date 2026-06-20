@@ -149,6 +149,79 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
+/**
+ * Item in *layout → header*
+ */
+export interface LayoutDocumentDataHeaderItem {
+  /**
+   * link field in *layout → header*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.header[].link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Item in *layout → footer*
+ */
+export interface LayoutDocumentDataFooterItem {
+  /**
+   * link field in *layout → footer*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.footer[].link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Content for layout documents
+ */
+interface LayoutDocumentData {
+  /**
+   * header field in *layout*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.header[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  header: prismic.GroupField<Simplify<LayoutDocumentDataHeaderItem>>;
+
+  /**
+   * footer field in *layout*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: layout.footer[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  footer: prismic.GroupField<Simplify<LayoutDocumentDataFooterItem>>;
+}
+
+/**
+ * layout document from Prismic
+ *
+ * - **API ID**: `layout`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LayoutDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<LayoutDocumentData>,
+    "layout",
+    Lang
+  >;
+
 type PageDocumentDataSlicesSlice =
   | FormSlice
   | CardsSlice
@@ -283,25 +356,7 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-interface SiteLayoutDocumentData {}
-
-/**
- * Site Layout document from Prismic
- *
- * - **API ID**: `site_layout`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/content-modeling
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type SiteLayoutDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<SiteLayoutDocumentData>,
-    "site_layout",
-    Lang
-  >;
-
-export type AllDocumentTypes = HomeDocument | PageDocument | SiteLayoutDocument;
+export type AllDocumentTypes = HomeDocument | LayoutDocument | PageDocument;
 
 /**
  * Item in *AccordionSection → Default → Primary → Items*
@@ -1812,11 +1867,13 @@ declare module "@prismicio/client" {
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
+      LayoutDocument,
+      LayoutDocumentData,
+      LayoutDocumentDataHeaderItem,
+      LayoutDocumentDataFooterItem,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
-      SiteLayoutDocument,
-      SiteLayoutDocumentData,
       AllDocumentTypes,
       AccordionSectionSlice,
       AccordionSectionSliceDefaultPrimaryItemsItem,

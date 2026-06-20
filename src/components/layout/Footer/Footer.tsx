@@ -13,7 +13,7 @@ interface FooterProps {
 }
 
 export default async function Footer({ layoutData }: FooterProps) {
-  const { text, social_links, links_1, links_title_1 } = layoutData;
+  const { text, social_links, links_1, links_title_1 } = (layoutData as any) || {};
 
   return (
     <footer className={styles.Holder}>
@@ -28,11 +28,11 @@ export default async function Footer({ layoutData }: FooterProps) {
             </div>
           )}
         </div>
-        {links_1.length > 0 && (
+        {links_1?.length > 0 && (
           <nav className={styles.Nav}>
             {isFilled.keyText(links_title_1) && <p>{links_title_1}</p>}
             <ul>
-              {links_1.map(({ link }, index) => (
+              {links_1?.map(({ link }, index) => (
                 <li key={index}>
                   <PrismicNextLink field={link}>{link.text}</PrismicNextLink>
                 </li>
@@ -40,9 +40,9 @@ export default async function Footer({ layoutData }: FooterProps) {
             </ul>
           </nav>
         )}
-        <nav className={styles.Nav}>
+        <nav className={styles.Nav}>  
           <ul>
-            {social_links.map((link, index) => (
+            {social_links?.map((link, index) => (
               <li key={index}>
                 <PrismicNextLink field={link.link}>
                   {isFilled.image(link.icon) ? (
