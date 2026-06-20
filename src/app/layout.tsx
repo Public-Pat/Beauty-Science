@@ -27,7 +27,7 @@ const bodyFont = Geist({
 
 export const metadata: Metadata = {
   title: "Beauty Science | Skin, Cosmetic and Wellness",
-  description: "Discover the fusion of skin, cosmetic and wellness.,
+  description: "Discover the fusion of skin, cosmetic and wellness.",
 };
 
 export default function RootLayout({
