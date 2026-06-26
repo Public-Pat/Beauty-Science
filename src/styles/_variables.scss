@@ -54,7 +54,7 @@
   // 1. Set some colors
   --black: #1A1A1A;
   --white: #FDFBF7;
-  --greyLight: #eaeaea;
+  --greyLight: #C1E0E2;
   --pink: #f6a7f8;
 
   // 2. Now set all the colours for the default variation
@@ -82,7 +82,7 @@
 
   // There are two available variations in colour. These are styled using the classNames color-variation-1/2
   --var-1-text: var(--black);
-  --var-1-bg: var(--black);
+  --var-1-bg: var(--greyLight);
 
   --var-1-button-color: var(--greyLight);
   --var-1-button-bg-color: var(--black);
@@ -98,14 +98,14 @@
   --var-1-error-color: var(--black);
 
   --var-2-text: var(--black);
-  --var-2-bg: var(--greyMedium);
+  --var-2-bg: var(--greyLight);
 
-  --var-2-button-color: var(--greyMedium);
+  --var-2-button-color: var(--greyLight);
   --var-2-button-bg-color: var(--black);
   --var-2-button-border-color: var(--black);
 
   --var-2-button-hover-color: var(--black);
-  --var-2-button-hover-bg-color: var(--greyMedium);
+  --var-2-button-hover-bg-color: var(--greyLight);
   --var-2-button-hover-border-color: var(--black);
 
   --var-2-input-background-color: transparent;
